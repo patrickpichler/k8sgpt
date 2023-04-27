@@ -8,7 +8,9 @@ type ICache interface {
 
 func New(noCache bool) ICache {
 	if noCache {
-		return &NoopCache{}
+		return &NoopCache{
+			ICache: &FileBasedCache{},
+		}
 	}
 
 	return &FileBasedCache{}
